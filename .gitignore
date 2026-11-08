@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+expense_demo.db
+.env
+.pytest_cache/
