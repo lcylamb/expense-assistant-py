@@ -67,12 +67,15 @@ pytest -q
 ```bash
 export LLM_PROVIDER=openai
 export LLM_API_KEY=...
-export LLM_BASE_URL=https://api.deepseek.com
-export LLM_MODEL=deepseek-chat
+# OpenAI 兼容服务的地址；用官方 OpenAI 可留空
+export LLM_BASE_URL=...
+# 填你账号当前可用、支持 tool calling 的模型名
+export LLM_MODEL=...
 ```
 
 默认 `mock`，不配 key 也能跑、能测。`openai` provider 使用 OpenAI
-`/chat/completions` 兼容协议。
+`/chat/completions` 兼容协议，模型名不写死；DeepSeek、OpenAI、Qwen 等兼容服务
+都可以，换模型只改环境变量。Anthropic 原生协议不兼容 OpenAI，需要单独 adapter。
 
 ## 设计要点
 

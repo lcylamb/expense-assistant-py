@@ -14,8 +14,8 @@ class Settings(BaseSettings):
 
     llm_provider: str = "mock"
     llm_api_key: str = ""
-    llm_base_url: str = "https://api.deepseek.com"
-    llm_model: str = "deepseek-chat"
+    llm_base_url: str = ""
+    llm_model: str = ""
 
     database_url: str = "sqlite:///./expense_demo.db"
     session_secret: str = ""

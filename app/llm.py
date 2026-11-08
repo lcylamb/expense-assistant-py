@@ -142,10 +142,15 @@ class OpenAIProvider:
         from openai import OpenAI
 
         settings = get_settings()
+        if not settings.llm_api_key or not settings.llm_model:
+            raise RuntimeError(
+                "LLM_PROVIDER=openai 需要同时配置 LLM_API_KEY 和 LLM_MODEL；"
+                "LLM_BASE_URL 可选，留空使用 OpenAI 默认地址。"
+            )
         self.model = settings.llm_model
         self.client = OpenAI(
             api_key=settings.llm_api_key,
-            base_url=settings.llm_base_url,
+            base_url=settings.llm_base_url or None,
         )
 
     def complete(self, messages: List[dict], tools: List[dict]) -> Completion:
